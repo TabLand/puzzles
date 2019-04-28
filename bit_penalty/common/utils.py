@@ -7,7 +7,8 @@ def convert_to_binary( number ):
   return "{0:b}".format( number ).zfill( bits_needed )
 
 def generate_list( size ):
-  bits_needed = math.ceil( math.log( size, base) )
+  global bits_needed 
+  bits_needed = int(math.ceil( math.log( size, base)))
   return list( range( size ) )
 
 def calculate_total_penalty(list, debug = ""):
