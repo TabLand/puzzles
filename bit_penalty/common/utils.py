@@ -10,22 +10,33 @@ def generate_list( size ):
   bits_needed = math.ceil( math.log( size, base) )
   return list( range( size ) )
 
-def debug_in_binary(list):
+def calculate_total_penalty(list, debug = ""):
 
-  previous = None
+  previous      = None
+  total_penalty = 0
+  verbose       = debug == "debug"
 
-  print "Item\tBin\tDiff\tPenalty"
+  if verbose:
+    print "Item\tBin\tDiff\tPenalty"
 
   for current in list:
     binary        = convert_to_binary( current )
     penalty       = calculate_individual_penalty(previous, current)
-    debug_penalty = calculate_individual_penalty(previous, current, True)
 
-    print str(current) + "\t" + str(binary)  + "\t" + str(debug_penalty) + "\t" + str(penalty)
+    if verbose: 
+      debug_penalty = calculate_individual_penalty(previous, current, "debug")
+      print str(current) + "\t" + str(binary)  + "\t" + str(debug_penalty) + "\t" + str(penalty)
+
     previous = current
+    total_penalty += penalty
 
-def calculate_individual_penalty( first, second, verbose = False):
+  if verbose:
+    print "Total penalty for list order = " + str(total_penalty)
+
+def calculate_individual_penalty( first, second, debug = ""):
   differing_bits = 0
+  verbose        = debug == "debug"
+
   if first is not None:
         differing_bits = first ^ second
   if verbose:
@@ -43,3 +54,4 @@ def hamming_weight( differing_bits ):
       count += 1
 
   return count
+
