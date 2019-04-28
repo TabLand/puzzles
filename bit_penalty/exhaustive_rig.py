@@ -21,8 +21,8 @@ def search_recursive( list ):
   best_combo    = None
   worst_combo   = None
 
-  num_best_combo  = 0
-  num_worst_combo = 0
+  num_best_combo  = -2
+  num_worst_combo = -2
 
   i = 0
 
