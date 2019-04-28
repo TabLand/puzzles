@@ -29,6 +29,8 @@ def search_recursive( list ):
   for combination in combinations:
     penalty = utils.calculate_total_penalty(combination)
 
+    penalty_bounds_changed = False
+
     if worst_penalty is None:
       worst_penalty = penalty
       best_penalty  = penalty
@@ -37,21 +39,24 @@ def search_recursive( list ):
 
       num_best_combo  = 1
       num_worst_combo = 1
+      penalty_bounds_changed = True
 
     elif penalty > worst_penalty:
       worst_penalty   = penalty
       worst_combo     = combination
       num_worst_combo = 1
+      penalty_bounds_changed = True
 
     elif penalty < best_penalty:
       best_penalty   = penalty
       best_combo     = combination
       num_best_combo = 1
+      penalty_bounds_changed = True
   
-    elif penalty == best_penalty:
+    if penalty == best_penalty and not penalty_bounds_changed:
       num_best_combo = num_best_combo + 1
 
-    elif penalty == worst_penalty:
+    if penalty == worst_penalty and not penalty_bounds_changed:
       num_worst_combo = num_worst_combo + 1
 
     i = i + 1
