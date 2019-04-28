@@ -9,6 +9,7 @@ def search(size):
 
 def search_recursive( list ):
   num_combinations = math.factorial(len(list))
+  step             = math.floor(num_combinations/100)
 
   combinations  = itertools.permutations(list)
   worst_penalty = None
@@ -17,11 +18,12 @@ def search_recursive( list ):
   best_combo    = None
   worst_combo   = None
 
+  num_best_combo  = 0
+  num_worst_combo = 0
 
   i = 0
 
   for combination in combinations:
-    print str(combination)
     penalty = utils.calculate_total_penalty(combination)
 
     if worst_penalty is None:
@@ -30,24 +32,37 @@ def search_recursive( list ):
       best_combo    = combination
       worst_combo   = combination
 
+      num_best_combo  = 1
+      num_worst_combo = 1
+
     if penalty > worst_penalty:
-      worst_penalty = penalty
-      worst_combo   = combination
+      worst_penalty   = penalty
+      worst_combo     = combination
+      num_worst_combo = 1
 
     if penalty < best_penalty:
-      best_penalty  = penalty
-      best_combo    = combination
+      best_penalty   = penalty
+      best_combo     = combination
+      num_best_combo = 1
   
-    i = i + 1
+    if penalty == best_penalty:
+      num_best_combo = num_best_combo + 1
 
-    print "Traversed through " + str(i) + " of " + str(num_combinations) + " combinations"
+    if penalty == worst_penalty:
+      num_worst_combo = num_worst_combo + 1
+
+    i = i + 1
+    progress = i*100/num_combinations
+    
+    if i % step == 0:
+     print "Traversed through " + str(i) + " of " + str(num_combinations) + " combinations -- " + str(progress) + "% done"
     
 
-  print "Best Combination Found with hamming weight " + str(best_penalty)
+  print "Best Combination Found with hamming weight " + str(best_penalty) + ". This occurred " + str(num_best_combo) + "x times"
   print str(best_combo)
   utils.calculate_total_penalty(best_combo, "debug")
 
-  print "Worst Combination Found with hamming weight " + str(worst_penalty)
+  print "Worst Combination Found with hamming weight " + str(worst_penalty) + ". This occurred " + str(num_worst_combo) + "x times"
   print str(worst_combo)
   utils.calculate_total_penalty(worst_combo, "debug")
 
