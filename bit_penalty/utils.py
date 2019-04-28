@@ -33,6 +33,7 @@ def calculate_total_penalty(list, debug = ""):
 
   if verbose:
     print "Total penalty for list order = " + str(total_penalty)
+  return total_penalty
 
 def calculate_individual_penalty( first, second, debug = ""):
   differing_bits = 0
