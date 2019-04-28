@@ -7,12 +7,12 @@ bits_needed = 4
 def convert_to_binary( number ):
   return "{0:b}".format( number ).zfill( bits_needed )
 
-def generate_list( size ):
+def generate_series( size ):
   global bits_needed 
   bits_needed = int(math.ceil( math.log( size, base)))
   return list( range( size ) )
 
-def calculate_total_penalty(list, debug = ""):
+def calculate_total_penalty(series, debug = ""):
 
   previous      = None
   total_penalty = 0
@@ -21,7 +21,7 @@ def calculate_total_penalty(list, debug = ""):
   if verbose:
     print "Item\tBin\tDiff\tPenalty"
 
-  for current in list:
+  for current in series:
     binary        = convert_to_binary( current )
     penalty       = calculate_individual_penalty(previous, current)
 
@@ -33,7 +33,7 @@ def calculate_total_penalty(list, debug = ""):
     total_penalty += penalty
 
   if verbose:
-    print "Total penalty for list order = " + str(total_penalty)
+    print "Total penalty for series order = " + str(total_penalty)
   return total_penalty
 
 def calculate_individual_penalty( first, second, debug = ""):

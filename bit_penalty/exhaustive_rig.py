@@ -78,14 +78,14 @@ def final_search_debug():
   utils.calculate_total_penalty(worst_order, "debug")
 
 def search(size):
-  list  = utils.generate_list(size)
-  num_permutations = math.factorial(len(list))
+  series  = utils.generate_series(size)
+  num_permutations = math.factorial(len(series))
   step             = math.floor(num_permutations/1000)
 
   if step == 0:
     step = 1
 
-  permutations  = itertools.permutations(list)
+  permutations  = itertools.permutations(series)
   reset_bounds()
 
   i = 0
