@@ -52,7 +52,6 @@ def navigate_all_sources(penalties, navigator, comparator):
   paths = {}
 
   for source in navigator:
-    print "about to begin master search for route starting at node " + str(source)
     paths[source] = navigate_recursive(penalties, navigator, comparator, source, [])
 
   return paths
@@ -73,12 +72,6 @@ def navigate_recursive(penalties, navigator, comparator, source , existing_path)
 
     direction_nominal  = comparator(possible_penalties) == current_penalty
     already_visited    = destination in existing_path
-
-    print "Considering whether to go from " + str(source) + " to destination " + str(destination) + " under cost " + str(current_penalty)
-    print "Possible Penalties : " + str(possible_penalties)
-    print "Direction nominal  : " + str(direction_nominal)
-    print "Already visited    : " + str(already_visited)
-    print "Existing path      : " + str(existing_path)
 
     if direction_nominal and not already_visited:
       available_penalties.append(current_penalty)
