@@ -3,11 +3,10 @@ import itertools
 import utils
 import math
 
+
+
 def search(size):
   list  = utils.generate_list(size)
-  search_recursive(list)
-
-def search_recursive( list ):
   num_combinations = math.factorial(len(list))
   step             = math.floor(num_combinations/100)
 
