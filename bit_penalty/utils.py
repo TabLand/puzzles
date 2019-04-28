@@ -1,4 +1,5 @@
 import math
+import sys 
 
 base        = 2
 bits_needed = 4
@@ -57,3 +58,13 @@ def hamming_weight( differing_bits ):
 
   return count
 
+def grab_input():
+  if len(sys.argv) == 2:
+    size = int(sys.argv[1])
+    print "Will be searching bit penalties up to " + str(size)
+
+  else:
+    print "Please provide a number to search bit penalties up to as an argument..."
+    exit(1)
+
+  return int(size)

@@ -99,12 +99,4 @@ def search(size):
     
   final_search_debug()
 
-if len(sys.argv) == 2:
-  size = int(sys.argv[1])
-  print "Will be searching bit penalties up to " + str(size)
-  search(size)
-
-else:
-  print "Please provide a number to search bit penalties up to as an argument..."
-  exit(1)
-
+search(utils.grab_input())
