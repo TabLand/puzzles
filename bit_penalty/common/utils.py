@@ -18,13 +18,13 @@ def debug_in_binary(list):
 
   for current in list:
     binary        = convert_to_binary( current )
-    penalty       = calculate_individual_penalty(previous, current, False)
+    penalty       = calculate_individual_penalty(previous, current)
     debug_penalty = calculate_individual_penalty(previous, current, True)
 
     print str(current) + "\t" + str(binary)  + "\t" + str(debug_penalty) + "\t" + str(penalty)
     previous = current
 
-def calculate_individual_penalty( first, second, verbose ):
+def calculate_individual_penalty( first, second, verbose = False):
   differing_bits = 0
   if first is not None:
         differing_bits = first ^ second
