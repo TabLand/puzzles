@@ -12,3 +12,10 @@ Catch all for random math puzzles
 
    Ginger:
      The cost of a bit toggle is different for switching on vs switching off. I.e a service stop may be quicker / slower / easier / harder than a service start.
+
+   Canon:
+     Penalties are calculated in one direction from 2nd element to the last. The first penalty is between the 1st and 2nd element i.e n-1 penalties.
+
+   Wild Goose:
+     Penalties are calculated in a circular fashion. The first penalty will be between the last and first element i.e n penalties.
+     
