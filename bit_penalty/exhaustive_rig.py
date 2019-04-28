@@ -38,20 +38,20 @@ def search_recursive( list ):
       num_best_combo  = 1
       num_worst_combo = 1
 
-    if penalty > worst_penalty:
+    elif penalty > worst_penalty:
       worst_penalty   = penalty
       worst_combo     = combination
       num_worst_combo = 1
 
-    if penalty < best_penalty:
+    elif penalty < best_penalty:
       best_penalty   = penalty
       best_combo     = combination
       num_best_combo = 1
   
-    if penalty == best_penalty:
+    elif penalty == best_penalty:
       num_best_combo = num_best_combo + 1
 
-    if penalty == worst_penalty:
+    elif penalty == worst_penalty:
       num_worst_combo = num_worst_combo + 1
 
     i = i + 1
