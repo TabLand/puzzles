@@ -11,6 +11,9 @@ def search_recursive( list ):
   num_combinations = math.factorial(len(list))
   step             = math.floor(num_combinations/100)
 
+  if step == 0:
+    step = 1
+
   combinations  = itertools.permutations(list)
   worst_penalty = None
   best_penalty  = None
