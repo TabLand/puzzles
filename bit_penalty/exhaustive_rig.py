@@ -59,6 +59,7 @@ def search_recursive( list ):
     
     if i % step == 0:
      print "Traversed through " + str(i) + " of " + str(num_combinations) + " combinations -- " + str(progress) + "% done"
+     print str(combination) + " has a penalty of " + str(penalty)
     
 
   print "Best Combination Found with hamming weight " + str(best_penalty) + ". This occurred " + str(num_best_combo) + "x times"
